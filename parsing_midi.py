@@ -63,7 +63,6 @@ def prepare_sequence_in(notes, n_vocab, sequence_length):
     # map between notes and integers and back
     note_to_int = dict((note, number) for number, note in enumerate(pitchnames))
 
-    sequence_length = 100
     network_input = []
     for i in range(0, len(notes) - sequence_length, 1):
         sequence_in = notes[i:i + sequence_length]
@@ -77,6 +76,51 @@ def prepare_sequence_in(notes, n_vocab, sequence_length):
     normalized_input = normalized_input / float(n_vocab)
 
     return (network_input, normalized_input)
+
+
+# In[16]:
+
+
+#This section is for reading in the midi file into python
+def get_notes_for_one_song(song):
+    song_notes = []
+    midi = converter.parse(midi_path+'/'+song+".mid")
+    notes_to_parse = None
+
+    #check if file has instrument parts
+    try: # file has instrument parts
+        s2 = instrument.partitionByInstrument(midi)
+        notes_to_parse = s2.parts[0].recurse() 
+    except: # file has notes in a flat structure
+        notes_to_parse = midi.flat.notes
+
+    for element in notes_to_parse:
+        #check to see if this is a note or chord
+        if isinstance(element, note.Note):
+            song_notes.append(str(element.pitch))
+        elif isinstance(element, chord.Chord):
+            song_notes.append('.'.join(str(n) for n in element.normalOrder))
+            
+    return song_notes
+
+
+# In[19]:
+
+
+#This section creates the set of input notes sequences
+def prepare_melody_in(notes, n_vocab, song):
+
+    song_notes = get_notes_for_one_song(song)
+    
+    # get all pitch names
+    pitchnames = sorted(set(item for item in notes))
+
+    # map between notes and integers and back
+    note_to_int = dict((note, number) for number, note in enumerate(pitchnames))
+    
+    input_song = [note_to_int[char] for char in song_notes]
+
+    return input_song
 
 
 # In[ ]:
