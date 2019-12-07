@@ -7,7 +7,7 @@
 import numpy as np
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, LSTM, Activation
-
+from keras.layers import BatchNormalization as BatchNorm
 
 # In[5]:
 
@@ -41,14 +41,17 @@ def create_lstm_network(network_input, n_vocab):
     model.add(LSTM(
         lstm_nodes,
         input_shape=(network_input.shape[1], network_input.shape[2]),
+        recurrent_dropout=lstm_dropout,
         return_sequences=True
     ))
     #This deliberatly looses part of the data to prevent overfitting
-    model.add(Dropout(lstm_dropout))
-    model.add(LSTM(lstm_nodes, return_sequences=True))
-    model.add(Dropout(lstm_dropout))
+    model.add(LSTM(lstm_nodes, return_sequences=True, recurrent_dropout=lstm_dropout))
     model.add(LSTM(lstm_nodes))
+    model.add(BatchNorm())
+    model.add(Dropout(lstm_dropout))
     model.add(Dense(lstm_dense))
+    model.add(Activation('relu'))
+    model.add(BatchNorm())
     model.add(Dropout(lstm_dropout))
     #This makes sure our output layer matches the number of possible outputs
     model.add(Dense(n_vocab))
