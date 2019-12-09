@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[1]:
 
 
 import glob
@@ -10,16 +10,16 @@ import numpy
 from music21 import converter, instrument, note, chord
 
 
-# In[ ]:
+# In[2]:
 
 
 #path to input training data, songs
 midi_path = "midi_songs"
 #path to notes notefile
-notes_path = "notes_olivia_quarter_length"
+notes_path = "notes_olivia_quarter_length_batch"
 
 
-# In[ ]:
+# In[3]:
 
 
 #This section is for reading in the midi file into python
@@ -46,14 +46,14 @@ def get_notes():
                 notes.append(str(element.pitch) + "-" + str(element.quarterLength))
             elif isinstance(element, chord.Chord):
                 notes.append('.'.join(str(n) for n in element.normalOrder) + "-" + str(element.quarterLength))
-
+                
     with open("data/"+notes_path, 'wb') as filepath:
         pickle.dump(notes, filepath)
 
     return notes
 
 
-# In[ ]:
+# In[4]:
 
 
 #This section creates the set of input notes sequences
@@ -80,7 +80,7 @@ def prepare_sequence_in(notes, n_vocab, sequence_length):
     return (network_input, normalized_input)
 
 
-# In[ ]:
+# In[5]:
 
 
 #This section is for reading in the midi file into python
@@ -110,7 +110,7 @@ def get_notes_for_one_song(song):
     return song_notes
 
 
-# In[ ]:
+# In[6]:
 
 
 #This section creates the set of input notes sequences
@@ -124,7 +124,8 @@ def prepare_melody_in(notes, n_vocab, song):
     # map between notes and integers and back
     note_to_int = dict((note, number) for number, note in enumerate(pitchnames))
     
-    input_song = [note_to_int[char] for char in song_notes]
+    input_song = []
+    input_song.append([note_to_int[char] for char in song_notes])
 
     return input_song
 
@@ -132,7 +133,7 @@ def prepare_melody_in(notes, n_vocab, song):
 # In[ ]:
 
 
-#et_notes()
+#gt_notes()
 
 
 # In[ ]:
