@@ -1,0 +1,42 @@
+Adadelta - 20175
+epochs 50 | Steps 2700 | total loss : 1861222.625
+
+
+Optimizer: <class 'tensorflow.python.keras.optimizer_v2.adagrad.Adagrad'>
+HBox(children=(IntProgress(value=0, description='epochs', max=50, style=ProgressStyle(description_width='initial')), HTML(value='')))
+HBox(children=(IntProgress(value=0, description='MUSIC', max=7, style=ProgressStyle(description_width='initial')), HTML(value='')))
+HBox(children=(IntProgress(value=0, max=344), HTML(value='')))
+epochs 1 | Steps 20 | total loss : 14148.6689453125
+epochs 50 | Steps 2700 | total loss : 1698427.5
+
+
+Optimizer: <class 'tensorflow.python.keras.optimizer_v2.adam.Adam'>
+HBox(children=(IntProgress(value=0, description='epochs', max=50, style=ProgressStyle(description_width='initial')), HTML(value='')))
+HBox(children=(IntProgress(value=0, description='MUSIC', max=7, style=ProgressStyle(description_width='initial')), HTML(value='')))
+HBox(children=(IntProgress(value=0, max=477), HTML(value='')))
+epochs 1 | Steps 20 | total loss : 16436.41796875
+epochs 50 | Steps 2700 | total loss : 167395.515625
+
+
+Optimizer: <class 'tensorflow.python.keras.optimizer_v2.adamax.Adamax'>
+HBox(children=(IntProgress(value=0, description='epochs', max=50, style=ProgressStyle(description_width='initial')), HTML(value='')))
+HBox(children=(IntProgress(value=0, description='MUSIC', max=7, style=ProgressStyle(description_width='initial')), HTML(value='')))
+HBox(children=(IntProgress(value=0, max=434), HTML(value='')))
+epochs 1 | Steps 20 | total loss : 739.40576171875
+epochs 50 | Steps 2700 | total loss : 995.1591796875
+
+
+Optimizer: <class 'tensorflow.python.keras.optimizer_v2.ftrl.Ftrl'>
+HBox(children=(IntProgress(value=0, description='epochs', max=50, style=ProgressStyle(description_width='initial')), HTML(value='')))
+HBox(children=(IntProgress(value=0, description='MUSIC', max=7, style=ProgressStyle(description_width='initial')), HTML(value='')))
+HBox(children=(IntProgress(value=0, max=342), HTML(value='')))
+epochs 1 | Steps 20 | total loss : 19161.638671875
+epochs 50 | Steps 2700 | total loss : 1788060.5
+
+
+Optimizer: <class 'tensorflow.python.keras.optimizer_v2.nadam.Nadam'>
+HBox(children=(IntProgress(value=0, description='epochs', max=50, style=ProgressStyle(description_width='initial')), HTML(value='')))
+HBox(children=(IntProgress(value=0, description='MUSIC', max=7, style=ProgressStyle(description_width='initial')), HTML(value='')))
+HBox(children=(IntProgress(value=0, max=408), HTML(value='')))
+epochs 1 | Steps 20 | total loss : 14899.53125
+
