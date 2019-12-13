@@ -109,13 +109,13 @@ melody_ns = upload_midi()
 melody_instrument = mm.infer_melody_for_sequence(melody_ns)
 notes = [note for note in melody_ns.notes
     if note.instrument == melody_instrument]
-        del melody_ns.notes[:]
-        melody_ns.notes.extend(
-        sorted(notes, key=lambda note: note.start_time))
-        for i in range(len(melody_ns.notes) - 1):
-            melody_ns.notes[i].end_time = melody_ns.notes[i + 1].start_time
-            inputs = melody_conditioned_encoders['inputs'].encode_note_sequence(
-            melody_ns)
+del melody_ns.notes[:]
+melody_ns.notes.extend(
+sorted(notes, key=lambda note: note.start_time))
+for i in range(len(melody_ns.notes) - 1):
+    melody_ns.notes[i].end_time = melody_ns.notes[i + 1].start_time
+    inputs = melody_conditioned_encoders['inputs'].encode_note_sequence(
+    melody_ns)
 
 # Play the melody
 mm.play_sequence(
