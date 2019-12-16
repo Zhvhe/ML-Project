@@ -1,9 +1,3 @@
-2019-12-09 12:18:57.733886: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
-2019-12-09 12:18:57.739778: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2294570000 Hz
-2019-12-09 12:18:57.740889: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7fe455015c90 executing computations on platform Host. Devices:
-2019-12-09 12:18:57.740913: I tensorflow/compiler/xla/service/service.cc:175]   StreamExecutor device (0): Host, Default Version
-2019-12-09 12:19:16.724919: W tensorflow/core/grappler/optimizers/implementation_selector.cc:310] Skipping optimization due to error while loading function libraries: Invalid argument: Functions '__inference___backward_standard_gru_13932_14308' and '__inference___backward_standard_gru_13932_14308_specialized_for_StatefulPartitionedCall_4_at___inference_train_step_14892' both implement 'gru_21d0a1fd-6bb2-44d6-a740-33f71e9bdef4' but their signatures do not match.
-HBox(children=(IntProgress(value=0), HTML(value='')))
 
 36602
 Model: "generate_scores_rnn"
